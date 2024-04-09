@@ -1,7 +1,9 @@
 import org.example.Client;
+import org.example.PremiumClient;
 import org.example.Room;
 import org.example.RoomReservation;
 
+import java.sql.SQLOutput;
 import java.time.LocalDate;
 
 public class Test {
@@ -40,4 +42,13 @@ public class Test {
         RoomReservation reservation = new RoomReservation(LocalDate.now(), client, room);
     }
 
+    @org.junit.jupiter.api.Test
+    public void premiumClientGetFullName(){
+        PremiumClient premiumClient = new PremiumClient("2", "Adam", "Nowak", LocalDate.of(1990, 1, 3), "test1@gmail.com", "123123123", true, "XXX1234", "Janusz");
+        PremiumClient premiumClient2 = new PremiumClient("2", "Adam", "Nowak", LocalDate.of(1990, 1, 3), "test1@gmail.com", "123123123", true, "XXX1234");
+
+        System.out.println(premiumClient.getFullName());
+        System.out.println(premiumClient2.getFullName());
+    }
 }
+
