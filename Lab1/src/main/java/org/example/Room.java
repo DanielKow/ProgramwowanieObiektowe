@@ -23,4 +23,60 @@ public class Room {
         this.isForSmokers = isForSmokers;
         this.hasAirConditioner = hasAirConditioner;
     }
+
+    public String getId() {
+        return id;
+    }
+
+    public double getArea() {
+        return area;
+    }
+
+    public int getFloor() {
+        return floor;
+    }
+
+    public boolean isHasKingSizeBed() {
+        return hasKingSizeBed;
+    }
+
+    public String getStandard() {
+        return standard;
+    }
+
+    public int getNumber() {
+        return number;
+    }
+
+    public int getMaxNumberOfGuests() {
+        return maxNumberOfGuests;
+    }
+
+    public boolean isForSmokers() {
+        return isForSmokers;
+    }
+
+    public boolean isHasAirConditioner() {
+        return hasAirConditioner;
+    }
+
+    public void setHasKingSizeBed(boolean hasKingSizeBed) {
+        this.hasKingSizeBed = hasKingSizeBed;
+    }
+
+    public void setStandard(String standard) {
+        this.standard = standard;
+    }
+
+    public void setMaxNumberOfGuests(int maxNumberOfGuests) {
+        this.maxNumberOfGuests = maxNumberOfGuests;
+    }
+
+    public void setForSmokers(boolean forSmokers) {
+        isForSmokers = forSmokers;
+    }
+
+    public void setHasAirConditioner(boolean hasAirConditioner) {
+        this.hasAirConditioner = hasAirConditioner;
+    }
 }

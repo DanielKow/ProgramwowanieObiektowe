@@ -9,5 +9,7 @@ public abstract class SpecialService {
     public abstract boolean isAccessible(int age);
     public abstract String getDescription();
 
-
+    public String getName() {
+        return name;
+    }
 }

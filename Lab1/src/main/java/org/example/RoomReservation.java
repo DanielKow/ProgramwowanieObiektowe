@@ -18,4 +18,21 @@ public class RoomReservation {
     public void confirmReservation() {
         isConfirmed = true;
     }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public boolean isConfirmed() {
+        return isConfirmed;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public Room getRoom() {
+        return room;
+    }
+
 }
