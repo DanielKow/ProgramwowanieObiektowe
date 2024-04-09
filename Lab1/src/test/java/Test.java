@@ -3,8 +3,8 @@ import org.example.PremiumClient;
 import org.example.Room;
 import org.example.RoomReservation;
 
-import java.sql.SQLOutput;
 import java.time.LocalDate;
+import java.util.jar.JarOutputStream;
 
 public class Test {
     @org.junit.jupiter.api.Test
@@ -49,6 +49,15 @@ public class Test {
 
         System.out.println(premiumClient.getFullName());
         System.out.println(premiumClient2.getFullName());
+    }
+
+    @org.junit.jupiter.api.Test
+    public void upgradePremiumClient() {
+        PremiumClient agatafagata = new PremiumClient("2", "Adam", "Nowak", LocalDate.of(1990, 1, 3), "test1@gmail.com", "123123123", true, "XXX1234", "Janusz");
+        System.out.println(agatafagata.getPremiumAccountType());
+
+        agatafagata.upgradeToPremiumPlus();
+        System.out.println(agatafagata.getPremiumAccountType());
     }
 }
 
