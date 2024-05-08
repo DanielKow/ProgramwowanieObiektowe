@@ -15,6 +15,19 @@ public class Client {
     private String idNumber;
     private String secondName;
 
+    public Client(String firstName, String lastName, LocalDate birthDate, String id){
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.birthDate = birthDate;
+        this.email = "";
+        this.phoneNumber = "";
+        this.isMale = true;
+        this.idNumber = "";
+        this.secondName = "";
+        this.id = id;
+
+    }
+
     public Client(String id, String firstName, String lastName, LocalDate birthDate, String email, String phoneNumber, boolean isMale, String idNumber) {
         this.id = id;
         this.firstName = firstName;
