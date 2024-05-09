@@ -11,8 +11,17 @@ public class Room {
     private int maxNumberOfGuests;
     private boolean isForSmokers;
     private boolean hasAirConditioner;
+    private String description;
 
-    public Room(String id, double area, int floor, boolean hasKingSizeBed, String standard, int number, int maxNumberOfGuests, boolean isForSmokers, boolean hasAirConditioner) {
+    public Room(double area, int floor, boolean hasKingSizeBed, String description, String id){
+        this.area = area;
+        this.floor = floor;
+        this.hasKingSizeBed = hasKingSizeBed;
+        this.description = description;
+        this.id = id;
+    }
+
+    public Room(String id, double area, int floor, boolean hasKingSizeBed, String standard, int number, int maxNumberOfGuests, boolean isForSmokers, boolean hasAirConditioner, String description) {
         this.id = id;
         this.area = area;
         this.floor = floor;
@@ -22,6 +31,7 @@ public class Room {
         this.maxNumberOfGuests = maxNumberOfGuests;
         this.isForSmokers = isForSmokers;
         this.hasAirConditioner = hasAirConditioner;
+        this.description = description;
     }
 
     public String getId() {
@@ -78,5 +88,12 @@ public class Room {
 
     public void setHasAirConditioner(boolean hasAirConditioner) {
         this.hasAirConditioner = hasAirConditioner;
+    }
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

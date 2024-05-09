@@ -9,6 +9,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Stream;
 
 public class Hotel implements HotelCapability {
 
@@ -55,27 +57,57 @@ public class Hotel implements HotelCapability {
 
     @Override
     public String getClientFullName(String clientId) {
-        return "";
+        Optional<Client> client =  clients.stream().filter(c->c.getId().equals(clientId)).findFirst();
+        if (client.isEmpty()){
+            return "";
+        }
+
+        return client.get().getFullName();
     }
 
     @Override
     public int getNumberOfUnderageClients() {
-        return 0;
+        int numberOfUnderageClients = 0;
+        for (Client client : clients){
+
+            if (client.getAge() < 18){
+                numberOfUnderageClients++;
+            }
+        }
+
+        return numberOfUnderageClients;
     }
 
     @Override
     public String addRoom(double area, int floor, boolean hasKingSizeBed, String description) {
-        return "";
+        String roomId = String.valueOf(rooms.size());
+        Room room = new Room(area, floor, hasKingSizeBed, description, roomId);
+
+        rooms.add(room);
+        return roomId;
     }
 
     @Override
     public double getRoomArea(String roomId) {
+        for (Room room : rooms){
+            if (roomId.equals(room.getId())){
+                return room.getArea();
+            }
+        }
         return 0;
     }
 
     @Override
     public int getNumberOfRoomsWithKingSizeBed(int floor) {
-        return 0;
+
+        int count = 0;
+        for (Room room : rooms){
+            if(floor == room.getFloor() && room.isHasKingSizeBed()){
+                count++;
+            }
+        }
+
+        return count;
     }
 
     @Override
