@@ -55,20 +55,6 @@ public class Hotel implements HotelCapability {
         return clientId;
     }
 
-    private int getCurrentMaxClientId() {
-        int maxId = -1;
-        for (Client client : clients) {
-            try {
-                int clientId = Integer.parseInt(client.getId());
-                if (clientId > maxId) {
-                    maxId = clientId;
-                }
-            } catch (NumberFormatException ignored) {}
-        }
-
-        return maxId;
-    }
-
     @Override
     public String getClientFullName(String clientId) {
         Optional<Client> client = clients.stream().filter(c -> c.getId().equals(clientId)).findFirst();
@@ -126,19 +112,17 @@ public class Hotel implements HotelCapability {
 
     @Override
     public String addNewReservation(String clientId, String roomId, LocalDate date) throws ClientNotFoundException, RoomNotFoundException, RoomReservedException {
-
         Client client = getClientById(clientId);
         Room room = getRoomById(roomId);
-
 
         for (RoomReservation tempReservation : reservations) {
             if (room.getId().equals(tempReservation.getRoom().getId()) && date.isEqual(tempReservation.getDate())) {
                 throw new RoomReservedException(roomId, date);
-
             }
         }
 
-        String reservationId = String.valueOf(reservations.size());
+        int maxReservationId = getCurrentMaxReservationId();
+        String reservationId = String.valueOf(maxReservationId + 1);
 
         RoomReservation reservation = new RoomReservation(date, client, room, reservationId);
         reservations.add(reservation);
@@ -229,5 +213,32 @@ public class Hotel implements HotelCapability {
         return room;
     }
 
+    private int getCurrentMaxClientId() {
+        int maxId = -1;
+        for (Client client : clients) {
+            try {
+                int clientId = Integer.parseInt(client.getId());
+                if (clientId > maxId) {
+                    maxId = clientId;
+                }
+            } catch (NumberFormatException ignored) {}
+        }
 
+        return maxId;
+    }
+
+    private int getCurrentMaxReservationId() {
+        int maxId = -1;
+
+        for (RoomReservation reservation : reservations) {
+            try {
+                int reservationId = Integer.parseInt(reservation.getId());
+                if (reservationId > maxId) {
+                    maxId = reservationId;
+                }
+            } catch (NumberFormatException ignored) {}
+        }
+
+        return maxId;
+    }
 }
