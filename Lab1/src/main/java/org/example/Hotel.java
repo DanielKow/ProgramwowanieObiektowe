@@ -8,9 +8,7 @@ import org.example.exceptions.RoomReservedException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Stream;
 
 public class Hotel implements HotelCapability {
 
@@ -47,12 +45,28 @@ public class Hotel implements HotelCapability {
 
     @Override
     public String addClient(String firstName, String lastName, LocalDate birthDate) {
-        String clientId = String.valueOf(clients.size());
+        int maxClientId = getCurrentMaxClientId();
+        String clientId = String.valueOf(maxClientId + 1);
+
         Client client = new Client(firstName, lastName, birthDate, clientId);
 
         clients.add(client);
 
         return clientId;
+    }
+
+    private int getCurrentMaxClientId() {
+        int maxId = -1;
+        for (Client client : clients) {
+            try {
+                int clientId = Integer.parseInt(client.getId());
+                if (clientId > maxId) {
+                    maxId = clientId;
+                }
+            } catch (NumberFormatException ignored) {}
+        }
+
+        return maxId;
     }
 
     @Override
@@ -184,7 +198,7 @@ public class Hotel implements HotelCapability {
         return roomIds;
     }
 
-    private Client getClientById(String clientId) throws ClientNotFoundException {
+    public Client getClientById(String clientId) throws ClientNotFoundException {
         Client client = null;
         for (Client tempClient : clients) {
             if (clientId.equals(tempClient.getId())) {
