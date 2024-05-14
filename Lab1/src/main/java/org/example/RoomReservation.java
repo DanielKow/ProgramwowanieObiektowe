@@ -9,9 +9,7 @@ public class RoomReservation {
     private Room room;
     private String id;
 
-
-
-    public RoomReservation(LocalDate date, Client client, Room room, String id ) {
+    public RoomReservation(LocalDate date, Client client, Room room, String id) {
         this.date = date;
         this.isConfirmed = false;
         this.client = client;

@@ -5,7 +5,6 @@ public class Room {
     private double area;
     private int floor;
     private boolean hasKingSizeBed;
-
     private String standard;
     private int number;
     private int maxNumberOfGuests;
@@ -13,7 +12,7 @@ public class Room {
     private boolean hasAirConditioner;
     private String description;
 
-    public Room(double area, int floor, boolean hasKingSizeBed, String description, String id){
+    public Room(double area, int floor, boolean hasKingSizeBed, String description, String id) {
         this.area = area;
         this.floor = floor;
         this.hasKingSizeBed = hasKingSizeBed;
@@ -89,6 +88,7 @@ public class Room {
     public void setHasAirConditioner(boolean hasAirConditioner) {
         this.hasAirConditioner = hasAirConditioner;
     }
+
     public String getDescription() {
         return description;
     }

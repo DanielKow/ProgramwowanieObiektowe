@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class GetRoomAreaInHotelTests {
 
     @Test
-    void getRoomArea_should_return_zero_when_room_with_given_id_does_not_exist(){
+    void getRoomArea_should_return_zero_when_room_with_given_id_does_not_exist() {
         //  given
 
         ArrayList<Room> rooms = new ArrayList<>();
@@ -18,7 +18,7 @@ public class GetRoomAreaInHotelTests {
         rooms.add(new Room(25.45, 1, false, "Czysto", "1"));
         rooms.add(new Room(17.99, 2, true, "Czysto", "2"));
 
-        HotelCapability hotel = new Hotel("Syrenka",new ArrayList<SpecialService>(), new ArrayList<Client>(), new ArrayList<RoomReservation>(), rooms);
+        HotelCapability hotel = new Hotel("Syrenka", new ArrayList<SpecialService>(), new ArrayList<Client>(), new ArrayList<RoomReservation>(), rooms);
         //  when
         double roomArea = hotel.getRoomArea("5");
 
@@ -27,13 +27,13 @@ public class GetRoomAreaInHotelTests {
     }
 
     @ParameterizedTest
-    @ValueSource(strings={"1","3","20","100"})
-    void getRoomArea_should_return_zero_when_there_are_no_rooms(String roomId){
+    @ValueSource(strings = {"1", "3", "20", "100"})
+    void getRoomArea_should_return_zero_when_there_are_no_rooms(String roomId) {
         //  given
 
         ArrayList<Room> rooms = new ArrayList<>();
 
-        HotelCapability hotel = new Hotel("Syrenka",new ArrayList<SpecialService>(), new ArrayList<Client>(), new ArrayList<RoomReservation>(), rooms);
+        HotelCapability hotel = new Hotel("Syrenka", new ArrayList<SpecialService>(), new ArrayList<Client>(), new ArrayList<RoomReservation>(), rooms);
         //  when
         double roomArea = hotel.getRoomArea(roomId);
 
@@ -43,7 +43,7 @@ public class GetRoomAreaInHotelTests {
 
 
     @Test
-    void getRoomArea_should_return_area_when_there_is_room_with_given_id(){
+    void getRoomArea_should_return_area_when_there_is_room_with_given_id() {
         //  given
 
         ArrayList<Room> rooms = new ArrayList<>();
@@ -51,14 +51,12 @@ public class GetRoomAreaInHotelTests {
         rooms.add(new Room(25.45, 1, false, "Czysto", "1"));
         rooms.add(new Room(17.99, 2, true, "Czysto", "2"));
 
-        HotelCapability hotel = new Hotel("Syrenka",new ArrayList<SpecialService>(), new ArrayList<Client>(), new ArrayList<RoomReservation>(), rooms);
+        HotelCapability hotel = new Hotel("Syrenka", new ArrayList<SpecialService>(), new ArrayList<Client>(), new ArrayList<RoomReservation>(), rooms);
         //  when
         double roomArea = hotel.getRoomArea("1");
 
         //  then
         assertEquals(25.45, roomArea);
     }
-
-
 
 }

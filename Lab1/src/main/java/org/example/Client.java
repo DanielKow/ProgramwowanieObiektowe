@@ -15,7 +15,7 @@ public class Client {
     private String idNumber;
     private String secondName;
 
-    public Client(String firstName, String lastName, LocalDate birthDate, String id){
+    public Client(String firstName, String lastName, LocalDate birthDate, String id) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthDate = birthDate;
