@@ -28,20 +28,17 @@ public class GetNumberOfUnderageClientsInHotelTests {
     @Test
     void getNumberOfUnderageClients_should_return_zero_when_there_are_no_clients() {
         //  given
-        ArrayList<Client> clients = new ArrayList<>();
-
-        HotelCapability hotel = new Hotel("Syrenka", new ArrayList<SpecialService>(), clients, new ArrayList<RoomReservation>(), new ArrayList<Room>());
+        HotelCapability hotel = new Hotel("Syrenka");
 
         //  when
         int numberOfUnderageClients = hotel.getNumberOfUnderageClients();
 
         //  then
         assertEquals(0, numberOfUnderageClients);
-
     }
 
     @Test
-    void getNumberOfUnderageClients_should_return_zero_when_there_are_underage_clients() {
+    void getNumberOfUnderageClients_should_return_number_of_underage_clients() {
         //  given
         ArrayList<Client> clients = new ArrayList<>();
         clients.add(new Client("Marek", "Nowak", LocalDate.now().minusYears(7), "1"));
@@ -55,7 +52,6 @@ public class GetNumberOfUnderageClientsInHotelTests {
 
         //  then
         assertEquals(2, numberOfUnderageClients);
-
     }
 
 }

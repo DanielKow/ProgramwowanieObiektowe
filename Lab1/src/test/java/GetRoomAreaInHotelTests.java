@@ -19,6 +19,7 @@ public class GetRoomAreaInHotelTests {
         rooms.add(new Room(17.99, 2, true, "Czysto", "2"));
 
         HotelCapability hotel = new Hotel("Syrenka", new ArrayList<SpecialService>(), new ArrayList<Client>(), new ArrayList<RoomReservation>(), rooms);
+
         //  when
         double roomArea = hotel.getRoomArea("5");
 
