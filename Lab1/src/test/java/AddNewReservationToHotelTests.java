@@ -247,5 +247,37 @@ public class AddNewReservationToHotelTests {
         // then
         assertEquals("4", reservationId);
     }
+
+    @Test
+    void addNewReservation_should_add_new_room_reservation() throws ClientNotFoundException, RoomNotFoundException {
+        // given
+        ArrayList<Client> clients = new ArrayList<>();
+        clients.add(new Client("Marek", "Nowak", LocalDate.of(2001, 3, 27), "1"));
+        clients.add(new Client("Arek", "Kwiatek", LocalDate.of(1999, 2, 7), "2"));
+        clients.add(new Client("Rek", "Rekin", LocalDate.of(1789, 11, 28), "3"));
+
+        ArrayList<Room> rooms = new ArrayList<>();
+        rooms.add(new Room(30, 2, true, "Ładny z widokiem na morze", "1"));
+        rooms.add(new Room(25, 1, true, "Brzydki bez widoku na morze", "2"));
+        rooms.add(new Room(17, 2, true, "Przyjemny z kominkiem", "3"));
+
+        ArrayList<RoomReservation> reservations = new ArrayList<>();
+        reservations.add(new RoomReservation(LocalDate.of(2025, 5, 13), clients.get(1), rooms.get(0), "0a"));
+        reservations.add(new RoomReservation(LocalDate.of(2024, 7, 13), clients.get(2), rooms.get(1), "b"));
+        reservations.add(new RoomReservation(LocalDate.of(2022, 5, 15), clients.get(0), rooms.get(2), "c"));
+        reservations.add(new RoomReservation(LocalDate.of(2021, 5, 10), clients.get(1), rooms.get(0), "3"));
+        reservations.add(new RoomReservation(LocalDate.of(2019, 1, 7), clients.get(2), rooms.get(1), "4eee"));
+
+        Hotel hotel = new Hotel("Syrenka", new ArrayList<SpecialService>(), clients, reservations, rooms);
+
+        // when
+        String reservationId = hotel.addNewReservation("1", "2", LocalDate.now().plusDays(1));
+
+        // then
+        RoomReservation reservation = hotel.getRoomReservationById(reservationId);
+        assertEquals("1", reservation.getClient().getId());
+        assertEquals("2", reservation.getRoom().getId());
+        assertEquals(LocalDate.now().plusDays(1), reservation.getDate());
+    }
 }
 
