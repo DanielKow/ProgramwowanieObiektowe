@@ -80,7 +80,8 @@ public class Hotel implements HotelCapability {
 
     @Override
     public String addRoom(double area, int floor, boolean hasKingSizeBed, String description) {
-        String roomId = String.valueOf(rooms.size());
+        int maxRoomId = getCurrentMaxRoomId();
+        String roomId = String.valueOf(maxRoomId + 1);
         Room room = new Room(area, floor, hasKingSizeBed, description, roomId);
 
         rooms.add(room);
@@ -197,7 +198,7 @@ public class Hotel implements HotelCapability {
         return client;
     }
 
-    private Room getRoomById(String roomId) throws RoomNotFoundException {
+    public Room getRoomById(String roomId) throws RoomNotFoundException {
         Room room = null;
         for (Room tempRoom : rooms) {
             if (roomId.equals(tempRoom.getId())) {
@@ -237,6 +238,21 @@ public class Hotel implements HotelCapability {
                     maxId = reservationId;
                 }
             } catch (NumberFormatException ignored) {}
+        }
+
+        return maxId;
+    }
+
+    private int getCurrentMaxRoomId() {
+        int maxId = -1;
+
+        for (Room room : rooms) {
+            try {
+                int roomId = Integer.parseInt(room.getId());
+                if (roomId > maxId) {
+                    maxId = roomId;
+                }
+            } catch (NumberFormatException ignored){}
         }
 
         return maxId;
