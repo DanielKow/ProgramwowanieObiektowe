@@ -214,6 +214,22 @@ public class Hotel implements HotelCapability {
         return room;
     }
 
+    public RoomReservation getRoomReservationById(String reservationId) throws ReservationNotFoundException {
+        RoomReservation reservation = null;
+        for (RoomReservation tempReservation : reservations) {
+            if (reservationId.equals(tempReservation.getId())) {
+                reservation = tempReservation;
+                break;
+            }
+        }
+        if (reservation == null) {
+
+            throw new ReservationNotFoundException("Rezerwacja nie została znaleziona");
+        }
+
+        return reservation;
+    }
+
     private int getCurrentMaxClientId() {
         int maxId = -1;
         for (Client client : clients) {
