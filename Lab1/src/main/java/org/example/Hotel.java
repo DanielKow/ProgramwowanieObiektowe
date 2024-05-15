@@ -8,6 +8,7 @@ import org.example.exceptions.RoomReservedException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Optional;
 
 public class Hotel implements HotelCapability {
@@ -171,7 +172,7 @@ public class Hotel implements HotelCapability {
 
         Client client = getClientById(clientId);
 
-        ArrayList<String> roomIds = new ArrayList<>();
+        HashSet<String> roomIds = new HashSet<>();
 
         for (RoomReservation reservation : reservations) {
             if (client.getId().equals(reservation.getClient().getId())) {
