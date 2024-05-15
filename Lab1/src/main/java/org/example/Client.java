@@ -2,6 +2,7 @@ package org.example;
 
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.ArrayList;
 
 public class Client {
     private String id;
@@ -57,11 +58,21 @@ public class Client {
     }
 
     public String getFullName() {
-        if (secondName == null || secondName.isBlank()) {
-            return firstName + " " + lastName;
+        ArrayList<String> fullNameParts = new ArrayList<>();
+
+        if (firstName != null && !firstName.isBlank()) {
+            fullNameParts.add(firstName);
         }
 
-        return firstName + " " + secondName + " " + lastName;
+        if (secondName != null && !secondName.isBlank()) {
+            fullNameParts.add(secondName);
+        }
+
+        if (lastName != null && !lastName.isBlank()) {
+            fullNameParts.add(lastName);
+        }
+
+        return String.join(" ", fullNameParts);
     }
 
     public String getId() {
