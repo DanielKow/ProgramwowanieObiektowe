@@ -45,6 +45,18 @@ public class ClientTests {
     }
 
     @Test
+    void getFullName_should_return_lastName_when_there_is_no_firstName_and_secondName() {
+        // Given
+        Client client = new Client("1", null, "Radomski", null, null, null, true, null, null);
+
+        // When
+        String fullName = client.getFullName();
+
+        // Then
+        assertEquals("Radomski", fullName);
+    }
+
+    @Test
     void getFullName_should_return_firstName_and_secondName_and_lastName() {
         // Given
         Client client = new Client("1", "Tomasz", "Radomski", null, null, null, true, null, "Jan");
@@ -93,6 +105,19 @@ public class ClientTests {
 
         // Then
         assertEquals("Tomasz Adam", fullName);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"", " ", "  ", "\t", "\r\n"})
+    void getFullName_should_return_lastName_when_firstName_and_secondName_are_blank(String blank) {
+        // Given
+        Client client = new Client("1", blank, "Radomski", null, null, null, true, null, blank);
+
+        // When
+        String fullName = client.getFullName();
+
+        // Then
+        assertEquals("Radomski", fullName);
     }
 
     @Test
