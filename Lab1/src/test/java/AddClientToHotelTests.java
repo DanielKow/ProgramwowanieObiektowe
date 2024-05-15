@@ -43,8 +43,8 @@ public class AddClientToHotelTests {
     void addClient_should_return_next_number_as_id_for_newly_created_client_even_if_there_is_a_gap_in_ids() {
         // Given
         ArrayList<Client> clients = new ArrayList<>();
-        clients.add(new Client("Piotr", "Szatkowski", LocalDate.of(1998, 2, 4), "0"));
-        clients.add(new Client("Adam", "Kadłuczka", LocalDate.of(1995, 12, 30), "1"));
+        clients.add(new Client("Piotr", "Szatkowski", LocalDate.of(1998, 2, 4), "1"));
+        clients.add(new Client("Adam", "Kadłuczka", LocalDate.of(1995, 12, 30), "0"));
         clients.add(new Client("Balbina", "Bujak", LocalDate.of(1999, 2, 14), "2"));
         clients.add(new Client("Piotr", "Protasiewicz", LocalDate.of(1992, 7, 23), "4"));
 

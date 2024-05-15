@@ -45,8 +45,8 @@ public class AddRoomToHotelTests {
         // Given
         ArrayList<Room> rooms = new ArrayList<>();
         rooms.add(new Room(10, 1, false, "Blisko baru", "1"));
-        rooms.add(new Room(20, 1, true, "Luksus", "3"));
-        rooms.add(new Room(10, 5, false, "Daleko od baru", "4"));
+        rooms.add(new Room(20, 1, true, "Luksus", "4"));
+        rooms.add(new Room(10, 5, false, "Daleko od baru", "3"));
         rooms.add(new Room(10, 2, true, "Czerwone ściany", "8"));
 
         HotelCapability hotel = new Hotel("Splendor", new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), rooms);

@@ -204,8 +204,8 @@ public class AddNewReservationToHotelTests {
 
         ArrayList<RoomReservation> reservations = new ArrayList<>();
         reservations.add(new RoomReservation(LocalDate.of(2025, 5, 13), clients.get(1), rooms.get(0), "0"));
-        reservations.add(new RoomReservation(LocalDate.of(2024, 7, 13), clients.get(2), rooms.get(1), "1"));
-        reservations.add(new RoomReservation(LocalDate.of(2022, 5, 15), clients.get(0), rooms.get(2), "2"));
+        reservations.add(new RoomReservation(LocalDate.of(2024, 7, 13), clients.get(2), rooms.get(1), "2"));
+        reservations.add(new RoomReservation(LocalDate.of(2022, 5, 15), clients.get(0), rooms.get(2), "1"));
         reservations.add(new RoomReservation(LocalDate.of(2021, 5, 10), clients.get(1), rooms.get(0), "3"));
         reservations.add(new RoomReservation(LocalDate.of(2019, 1, 7), clients.get(2), rooms.get(1), "4"));
 
