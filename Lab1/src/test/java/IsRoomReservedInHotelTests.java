@@ -7,8 +7,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class IsRoomReservedInHotelTests {
     @ParameterizedTest
@@ -85,7 +84,7 @@ public class IsRoomReservedInHotelTests {
     }
 
     @Test
-    void isRoomReserved_should_return_false_when_there_is_reservation_for_given_room_on_given_date() throws RoomNotFoundException {
+    void isRoomReserved_should_return_true_when_there_is_reservation_for_given_room_on_given_date() throws RoomNotFoundException {
         // Given
         ArrayList<Room> rooms = new ArrayList<>();
         rooms.add(new Room(10, 1, false, "Blisko baru", "0"));
@@ -106,9 +105,9 @@ public class IsRoomReservedInHotelTests {
         Hotel hotel = new Hotel("Brzydki", new ArrayList<>(), clients, reservations, rooms);
 
         // When
-        boolean isReserved = hotel.isRoomReserved("3", LocalDate.of(2024, 1, 3));
+        boolean isReserved = hotel.isRoomReserved("2", LocalDate.of(2024, 1, 3));
 
         // Then
-        assertFalse(isReserved);
+        assertTrue(isReserved);
     }
 }
